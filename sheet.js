@@ -19,6 +19,7 @@ Sheet.prototype.generate = function(){
 	var cols = config.cols,
 	data = config.rows,
 	colsLength = cols.length,
+	customTransforms = cols.customTransforms || '',
 	rows = "",
 	row = "",
 	colsWidth = "",
@@ -90,7 +91,7 @@ Sheet.prototype.generate = function(){
 	if (colsWidth !== "") {
 		sheetFront += '<cols>' + colsWidth + '</cols>';
 	}
-	xlsx.file(config.fileName, sheetFront + '<x:sheetData>' + rows + '</x:sheetData>'+ sheetBack);
+	xlsx.file(config.fileName, sheetFront + '<x:sheetData>' + rows + '</x:sheetData>'+ customTransforms + sheetBack);
 }
 
 module.exports = Sheet;
