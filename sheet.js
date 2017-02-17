@@ -90,7 +90,7 @@ Sheet.prototype.generate = function(){
 	if (colsWidth !== "") {
 		sheetFront += '<cols>' + colsWidth + '</cols>';
 	}
-	xlsx.file(config.fileName, sheetFront + '<x:sheetData>' + rows + '</x:sheetData>' + formatting + sheetBack);
+	xlsx.file(config.fileName, sheetFront + '<x:sheetData>' + rows + '</x:sheetData>'+ sheetBack);
 }
 
 module.exports = Sheet;
