@@ -2,8 +2,8 @@ var sheetFront = '<?xml version="1.0" encoding="utf-8"?><x:worksheet xmlns:ss="u
   + 'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="x14ac" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac">'
   + ' <x:sheetPr/><x:sheetViews><x:sheetView tabSelected="1" workbookViewId="0" /></x:sheetViews>'
   + ' <x:sheetFormatPr defaultRowHeight="15" />';
-var sheetBack =' <x:pageMargins left="0.75" right="0.75" top="0.75" bottom="0.5" header="0.5" footer="0.75" />'
-		+ ' <x:headerFooter /></x:worksheet>';
+var sheetBack ='<x:pageMargins left="0.75" right="0.75" top="0.75" bottom="0.5" header="0.5" footer="0.75" />'
+		+ '<x:headerFooter /></x:worksheet>';
 
 var fs = require('fs');
 
