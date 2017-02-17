@@ -56,7 +56,7 @@ Sheet.prototype.generate = function(){
 		currRow = i + 2;
 		row = '<x:row r="' + currRow + '" spans="1:' + colsLength + '">';
 		for (j = 0; j < colsLength; j++) {
-			styleIndex = null;
+			styleIndex = cols[j].rowStyleIndex || null;
 			cellData = r[j];
 			cellType = cols[j].type;
 			if (typeof cols[j].beforeCellWrite === 'function') {
@@ -124,11 +124,11 @@ var addNumberCell = function(cellRef, value, styleIndex){
 };
 
 var addPercentageCell = function(cellRef, value, styleIndex){
-  styleIndex = styleIndex || 4;
+  styleIndex = styleIndex || 3;
 	if (value===null)
 		return "";
 	else
-		return '<x:c r="'+cellRef+'" s="'+ styleIndex +'" t="0.00%"><x:v>'+value+'</x:v></x:c>';
+		return '<x:c r="'+cellRef+'" s="'+ styleIndex +'" t="n"><x:v>'+value+'</x:v></x:c>';
 };
 
 var addDateCell = function(cellRef, value, styleIndex){
