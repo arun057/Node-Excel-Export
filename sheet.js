@@ -71,6 +71,9 @@ Sheet.prototype.generate = function(){
 				delete e;
 			}
 			switch (cellType) {
+			case 'percentage':
+				row += addPercentageCell(getColumnLetter(j + 1) + currRow, cellData, styleIndex);
+				break;
 			case 'number':
 				row += addNumberCell(getColumnLetter(j + 1) + currRow, cellData, styleIndex);
 				break;
@@ -90,7 +93,8 @@ Sheet.prototype.generate = function(){
 	if (colsWidth !== "") {
 		sheetFront += '<cols>' + colsWidth + '</cols>';
 	}
-	xlsx.file(config.fileName, sheetFront + '<x:sheetData>' + rows + '</x:sheetData>' + sheetBack);
+	var formatting = '<conditionalFormatting sqref="L2:L500"><cfRule type="colorScale" priority="1"><colorScale><cfvo type="min" /><cfvo type="text" val="0" /><cfvo type="max" /><color rgb="ff0000" /><color rgb="ffffff" /><color rgb="00ff00" /></colorScale></cfRule></conditionalFormatting>';
+	xlsx.file(config.fileName, sheetFront + '<x:sheetData>' + rows + '</x:sheetData>' + formatting + sheetBack);
 }
 
 module.exports = Sheet;
@@ -117,6 +121,14 @@ var addNumberCell = function(cellRef, value, styleIndex){
 		return "";
 	else
 		return '<x:c r="'+cellRef+'" s="'+ styleIndex +'" t="n"><x:v>'+value+'</x:v></x:c>';
+};
+
+var addPercentageCell = function(cellRef, value, styleIndex){
+  styleIndex = styleIndex || 0;
+	if (value===null)
+		return "";
+	else
+		return '<x:c r="'+cellRef+'" s="'+ styleIndex +'" t="0.00%"><x:v>'+value+'</x:v></x:c>';
 };
 
 var addDateCell = function(cellRef, value, styleIndex){
