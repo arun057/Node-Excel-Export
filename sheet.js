@@ -124,7 +124,7 @@ var addNumberCell = function(cellRef, value, styleIndex){
 };
 
 var addPercentageCell = function(cellRef, value, styleIndex){
-  styleIndex = styleIndex || 0;
+  styleIndex = styleIndex || 4;
 	if (value===null)
 		return "";
 	else
